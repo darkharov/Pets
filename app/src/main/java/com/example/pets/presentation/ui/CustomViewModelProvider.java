@@ -1,5 +1,7 @@
 package com.example.pets.presentation.ui;
 
+import android.os.Build;
+
 import com.example.pets.presentation.ui.bases.BaseViewModel;
 
 import java.util.HashMap;
@@ -15,7 +17,7 @@ public class CustomViewModelProvider {
     private final Map<Class<? extends BaseViewModel>, Family> families;
 
     @Inject
-    public CustomViewModelProvider(Factory factory) {
+    CustomViewModelProvider(Factory factory) {
         families = new HashMap<>();
         this.factory = factory;
     }
@@ -25,6 +27,10 @@ public class CustomViewModelProvider {
             Class<? extends BaseViewModel> clazz,
             Object key
     ) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return (VM) families.computeIfAbsent(clazz, Family::new).get(key);
+        }
 
         Family family = families.get(clazz);
 
@@ -57,6 +63,11 @@ public class CustomViewModelProvider {
         }
 
         private BaseViewModel get(Object key) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                return viewModels.computeIfAbsent(key, (k) -> factory.create(clazz));
+            }
+
             BaseViewModel viewModel = viewModels.get(key);
 
             if (viewModel == null) {

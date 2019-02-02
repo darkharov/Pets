@@ -30,8 +30,15 @@ public abstract class ViewModelFragment<VM extends BaseViewModel> extends BaseFr
 
     protected abstract Class<VM> getViewModelClass();
 
+    @Nullable
     protected Object getViewModelKey() {
         return null;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = viewModelProvider.get(getViewModelClass(), getViewModelKey());
     }
 
     @Nullable
@@ -78,12 +85,6 @@ public abstract class ViewModelFragment<VM extends BaseViewModel> extends BaseFr
         }
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        viewModel = viewModelProvider.get(getViewModelClass(), getViewModelKey());
-    }
-
     public final VM getViewModel() {
         return viewModel;
     }
@@ -93,12 +94,7 @@ public abstract class ViewModelFragment<VM extends BaseViewModel> extends BaseFr
             @LayoutRes int layoutId,
             @Nullable ViewGroup parent
     ) {
-        VDB binding = DataBindingUtil.inflate(
-                inflater,
-                layoutId,
-                parent,
-                false
-        );
+        VDB binding = DataBindingUtil.inflate(inflater, layoutId, parent, false);
         bindings.add(binding);
         binding.setVariable(BR.viewModel, viewModel);
         return binding;

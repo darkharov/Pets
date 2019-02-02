@@ -2,6 +2,7 @@ package com.example.pets.presentation.ui.bases;
 
 import android.databinding.ObservableInt;
 
+import com.example.pets.Logger;
 import com.example.pets.core.NetworkFacade;
 import com.example.pets.presentation.ui.utils.DataBinding;
 
@@ -43,6 +44,7 @@ public class BaseViewModel {
     }
 
     public void onDestroy() {
+        Logger.e(this, "onDestroy()");
         disposables.dispose();
     }
 

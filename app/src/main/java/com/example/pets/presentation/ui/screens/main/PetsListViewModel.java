@@ -1,6 +1,7 @@
 package com.example.pets.presentation.ui.screens.main;
 
 import android.databinding.ObservableField;
+import android.util.Log;
 
 import com.example.pets.core.entities.Pet;
 import com.example.pets.presentation.ui.bases.BaseViewModel;
@@ -21,6 +22,8 @@ public class PetsListViewModel extends BaseViewModel {
 
     @Inject
     void init() {
+        Log.e("PetsListViewModel", "init()");
+
         execute(
                 networkFacade.getPets(Pet.Criteria.CAT),
                 new GetPetsObserver()
