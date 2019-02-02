@@ -9,13 +9,13 @@ public class Logger {
 
             String tag = o instanceof String
                     ? (String) o
-                    : getDeclaredClass(o).getSimpleName();
+                    : computeTag(o);
 
             Log.e(tag, msg);
         }
     }
 
-    private static String comupteTag(Object o) {
+    private static String computeTag(Object o) {
         return (o instanceof Class ? (Class) o : getDeclaredClass(o))
                 .getSimpleName();
     }
