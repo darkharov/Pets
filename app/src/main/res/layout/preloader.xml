@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.pets.presentation.ui.bases.BaseViewModel" />
+
+        <variable
+            name="viewModel"
+            type="BaseViewModel" />
+    </data>
+
+    <ViewSwitcher
+        style="@style/Fill"
+        app:displayedChild="@{viewModel.loadings > 0 ? 0 : 1}">
+
+        <ProgressBar
+            style="@style/Wrapped"
+            android:layout_gravity="center" />
+
+        <FrameLayout
+            android:id="@+id/content"
+            style="@style/Fill" />
+
+    </ViewSwitcher>
+
+</layout>

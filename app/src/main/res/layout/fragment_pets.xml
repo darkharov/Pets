@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.pets.presentation.ui.screens.main.PetsListViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.example.pets.presentation.ui.screens.main.PetsListViewModel" />
+
+    </data>
+
+    <FrameLayout
+        style="@style/Fill"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/Wide.Indented"
+            android:layout_gravity="center"
+            android:text="@{viewModel.text}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:text="Hello World" />
+
+    </FrameLayout>
+
+</layout>
