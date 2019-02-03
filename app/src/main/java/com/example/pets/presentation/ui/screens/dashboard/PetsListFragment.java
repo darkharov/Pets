@@ -1,4 +1,4 @@
-package com.example.pets.presentation.ui.screens.main;
+package com.example.pets.presentation.ui.screens.dashboard;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.pets.R;
 import com.example.pets.core.entities.Pet;
 import com.example.pets.databinding.ListContentBinding;
-import com.example.pets.presentation.ui.bases.ViewModelFragment;
+import com.example.pets.presentation.ui.bases.fragments.ViewModelFragment;
 
 import java.util.Objects;
 

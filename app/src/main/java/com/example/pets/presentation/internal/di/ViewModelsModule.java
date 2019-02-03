@@ -1,7 +1,7 @@
 package com.example.pets.presentation.internal.di;
 
 import com.example.pets.presentation.ui.bases.BaseViewModel;
-import com.example.pets.presentation.ui.screens.main.PetsListViewModel;
+import com.example.pets.presentation.ui.screens.dashboard.PetsListViewModel;
 
 import dagger.Binds;
 import dagger.Module;

@@ -13,11 +13,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import ru.terrakok.cicerone.Router;
 
 public class BaseViewModel {
 
     public final ObservableInt loadings = new ObservableInt();
 
+    @Inject protected Router router;
     @Inject protected NetworkFacade networkFacade;
 
     private CompositeDisposable disposables = new CompositeDisposable();

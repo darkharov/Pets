@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="com.example.pets.presentation.ui.screens.main.PetsListViewModel.PetViewHolder" />
+        <import type="com.example.pets.presentation.ui.screens.dashboard.PetsListViewModel.PetViewHolder" />
 
         <variable
             name="viewModel"
@@ -17,6 +17,7 @@
         style="@style/Wide"
         android:paddingTop="@dimen/margin_middle"
         android:paddingBottom="@dimen/margin_middle"
+        android:onClick="@{() -> viewModel.goToDetails()}"
         android:visibility="visible">
 
         <ImageView

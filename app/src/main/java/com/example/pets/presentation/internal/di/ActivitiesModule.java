@@ -1,7 +1,8 @@
 package com.example.pets.presentation.internal.di;
 
+import com.example.pets.presentation.ui.screens.dashboard.DashboardActivity;
+import com.example.pets.presentation.ui.screens.dashboard.details.PetDetailsActivity;
 import com.example.pets.presentation.ui.screens.initial.SplashActivity;
-import com.example.pets.presentation.ui.screens.main.DashboardActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -10,4 +11,5 @@ import dagger.android.ContributesAndroidInjector;
 public interface ActivitiesModule {
     @ContributesAndroidInjector SplashActivity splash();
     @ContributesAndroidInjector DashboardActivity dashboard();
+    @ContributesAndroidInjector PetDetailsActivity petDetails();
 }

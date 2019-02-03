@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 
 import com.example.pets.R;
 import com.example.pets.presentation.ui.screens.Screens;
-import com.example.pets.presentation.ui.screens.main.DashboardActivity;
+import com.example.pets.presentation.ui.screens.dashboard.DashboardActivity;
 
 import javax.inject.Inject;
 

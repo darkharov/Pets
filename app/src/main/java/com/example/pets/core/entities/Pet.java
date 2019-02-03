@@ -1,6 +1,8 @@
 package com.example.pets.core.entities;
 
-public class Pet {
+import java.io.Serializable;
+
+public class Pet implements Serializable {
 
     private final long id;
     private final String name;

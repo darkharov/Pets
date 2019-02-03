@@ -1,5 +1,7 @@
-package com.example.pets.presentation.ui.screens.main;
+package com.example.pets.presentation.ui.screens.dashboard;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,6 +10,8 @@ import android.support.v4.app.Fragment;
 import com.example.pets.R;
 import com.example.pets.core.entities.Pet;
 import com.example.pets.presentation.ui.bases.BaseActivity;
+import com.example.pets.presentation.ui.screens.Screens;
+import com.example.pets.presentation.ui.screens.dashboard.details.PetDetailsActivity;
 
 import java.util.LinkedList;
 import java.util.Objects;
@@ -131,6 +135,20 @@ public class DashboardActivity extends BaseActivity {
         protected Fragment createFragment(String screenKey, Object data) {
             Pet.Criteria criteria = Pet.Criteria.valueOf(screenKey);
             return PetsListFragment.newInstance(criteria);
+        }
+
+        @Override
+        protected Intent createActivityIntent(Context context, String screenKey, Object data) {
+
+            switch (screenKey) {
+
+                case Screens.PET_DETAILS:
+                    return PetDetailsActivity.newIntent(DashboardActivity.this, (Pet) data);
+
+                default:
+                    return super.createActivityIntent(context, screenKey, data);
+
+            }
         }
     }
 }

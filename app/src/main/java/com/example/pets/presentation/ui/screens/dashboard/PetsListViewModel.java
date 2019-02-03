@@ -1,4 +1,4 @@
-package com.example.pets.presentation.ui.screens.main;
+package com.example.pets.presentation.ui.screens.dashboard;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -8,6 +8,7 @@ import com.example.pets.R;
 import com.example.pets.core.entities.Pet;
 import com.example.pets.presentation.ui.bases.lists.BindingAdapter;
 import com.example.pets.presentation.ui.bases.lists.ListViewModel;
+import com.example.pets.presentation.ui.screens.Screens;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class PetsListViewModel extends ListViewModel<Pet> {
         return R.layout.item_pet;
     }
 
-    public void init(Pet.Criteria criteria) {
+    void init(Pet.Criteria criteria) {
         Log.e("PetsListViewModel", "init()");
 
         execute(
@@ -55,8 +56,12 @@ public class PetsListViewModel extends ListViewModel<Pet> {
 
     public class PetViewHolder extends BindingAdapter.BindingViewHolder<Pet> {
 
-        public PetViewHolder(@NonNull View itemView) {
+        PetViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+
+        public void goToDetails() {
+            router.navigateTo(Screens.PET_DETAILS, item.get());
         }
     }
 }

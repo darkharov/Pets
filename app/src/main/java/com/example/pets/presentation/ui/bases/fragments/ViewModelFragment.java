@@ -1,4 +1,4 @@
-package com.example.pets.presentation.ui.bases;
+package com.example.pets.presentation.ui.bases.fragments;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -15,6 +15,7 @@ import com.example.pets.BR;
 import com.example.pets.R;
 import com.example.pets.databinding.PreloaderBinding;
 import com.example.pets.presentation.ui.CustomViewModelProvider;
+import com.example.pets.presentation.ui.bases.BaseViewModel;
 
 import java.util.HashSet;
 import java.util.Set;

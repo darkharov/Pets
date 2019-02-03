@@ -1,4 +1,4 @@
-package com.example.pets.presentation.ui.bases;
+package com.example.pets.presentation.ui.bases.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

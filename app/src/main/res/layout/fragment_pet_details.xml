@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.pets.presentation.ui.screens.dashboard.details.PetDetailsFragment" />
+
+        <variable
+            name="viewModel"
+            type="PetDetailsFragment" />
+    </data>
+
+    <ScrollView style="@style/Fill"
+        android:fillViewport="true">
+
+        <LinearLayout
+            style="@style/Fill"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scaleType="centerCrop"
+                app:url="@{viewModel.pet.imageUrl}"
+                tools:ignore="ContentDescription"
+                tools:src="@tools:sample/avatars" />
+
+
+            <TextView
+                android:id="@+id/identifier"
+                style="@style/Wide.Indented"
+                android:layout_marginTop="@dimen/margin_middle"
+                android:text="@{String.valueOf(viewModel.pet.id)}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:text="42" />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/Wide.Indented"
+                android:layout_marginTop="@dimen/margin_middle"
+                android:text="@{viewModel.pet.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:ellipsize="end"
+                tools:maxLines="15"
+                tools:text="@tools:sample/lorem/random" />
+        </LinearLayout>
+    </ScrollView>
+</layout>
