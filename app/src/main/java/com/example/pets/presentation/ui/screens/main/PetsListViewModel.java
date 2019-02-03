@@ -1,24 +1,33 @@
 package com.example.pets.presentation.ui.screens.main;
 
-import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
 
+import com.example.pets.R;
 import com.example.pets.core.entities.Pet;
-import com.example.pets.presentation.ui.bases.BaseViewModel;
+import com.example.pets.presentation.ui.bases.lists.BindingAdapter;
+import com.example.pets.presentation.ui.bases.lists.ListViewModel;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
-public class PetsListViewModel extends BaseViewModel {
-
-    public final ObservableField<String> text = new ObservableField<>("");
+public class PetsListViewModel extends ListViewModel<Pet> {
 
     @Inject
     PetsListViewModel() {
     }
 
+    @Override
+    protected BindingAdapter.BindingViewHolder<Pet> createViewHolder(View view) {
+        return new PetViewHolder(view);
+    }
+
+    @Override
+    protected int getItemLayoutId() {
+        return R.layout.item_pet;
+    }
 
     @Inject
     void init() {
@@ -35,14 +44,20 @@ public class PetsListViewModel extends BaseViewModel {
 
         @Override
         public void onSuccess(List<Pet> pets) {
+            notifyListUpdated(pets);
+        }
 
-            String text = String.format(
-                    Locale.getDefault(),
-                    "The pets list has been loaded: size=%d",
-                    pets.size()
-            );
+        @Override
+        public void onError(Throwable e) {
+            notifyListUpdateFailed();
+        }
+    }
 
-            PetsListViewModel.this.text.set(text);
+
+    public class PetViewHolder extends BindingAdapter.BindingViewHolder<Pet> {
+
+        public PetViewHolder(@NonNull View itemView) {
+            super(itemView);
         }
     }
 }

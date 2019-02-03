@@ -89,6 +89,17 @@ public abstract class ViewModelFragment<VM extends BaseViewModel> extends BaseFr
         return viewModel;
     }
 
+    @SuppressWarnings("unchecked")
+    protected <VDB extends ViewDataBinding> VDB getBinding(Class<VDB> clazz) {
+        for (ViewDataBinding binding : bindings) {
+            if (clazz.isInstance(binding)) {
+                return (VDB) binding;
+            }
+        }
+
+        throw new IllegalStateException("Binding not found!");
+    }
+
     private <VDB extends ViewDataBinding> VDB safeInflate(
             LayoutInflater inflater,
             @LayoutRes int layoutId,

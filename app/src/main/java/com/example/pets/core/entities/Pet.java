@@ -2,16 +2,22 @@ package com.example.pets.core.entities;
 
 public class Pet {
 
-    private final String title;
+    private final long id;
+    private final String name;
     private final String imageUrl;
 
-    public Pet(String title, String imageUrl) {
-        this.title = title;
+    public Pet(long id, String name, String imageUrl) {
+        this.id = id;
+        this.name = name;
         this.imageUrl = imageUrl;
     }
 
-    public String getTitle() {
-        return title;
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getImageUrl() {

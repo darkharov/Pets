@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="com.example.pets.presentation.ui.screens.main.PetsListViewModel.PetViewHolder" />
+
+        <variable
+            name="viewModel"
+            type="PetViewHolder" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        style="@style/Wide"
+        android:paddingTop="@dimen/margin_middle"
+        android:paddingBottom="@dimen/margin_middle"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/image_size_item_pet"
+            android:layout_height="@dimen/image_size_item_pet"
+            android:layout_marginStart="@dimen/screen_horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:url="@{viewModel.item.imageUrl}"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/identifier"
+            style="@style/Wrapped"
+            android:layout_marginStart="@dimen/margin_middle"
+            android:layout_marginTop="@dimen/margin_middle"
+            android:text="@{String.valueOf(viewModel.item.id)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="42" />
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/WeightedHorizontally.Wrapped"
+            android:layout_marginEnd="@dimen/screen_horizontal_margin"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{viewModel.item.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/identifier"
+            app:layout_constraintTop_toBottomOf="@id/identifier"
+            tools:text="@tools:sample/lorem/random" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

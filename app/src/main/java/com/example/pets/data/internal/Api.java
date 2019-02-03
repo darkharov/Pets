@@ -1,7 +1,5 @@
 package com.example.pets.data.internal;
 
-import com.example.pets.core.entities.Pet;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +14,12 @@ public interface Api {
 
 
     class PetsResponse {
-        public final List<Pet> data = Collections.emptyList();
+
+        public final List<Entry> data = Collections.emptyList();
+
+        public static class Entry {
+            public String title;
+            public String url;
+        }
     }
 }
-

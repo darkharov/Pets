@@ -4,7 +4,7 @@ import android.databinding.ObservableInt;
 
 import com.example.pets.Logger;
 import com.example.pets.core.NetworkFacade;
-import com.example.pets.presentation.ui.utils.DataBinding;
+import com.example.pets.presentation.ui.utils.ProjectDataBindingUtil;
 
 import javax.inject.Inject;
 
@@ -73,12 +73,12 @@ public class BaseViewModel {
 
         @Override
         public void start() {
-            DataBinding.inc(loadings);
+            ProjectDataBindingUtil.inc(loadings);
         }
 
         @Override
         public void terminate() {
-            DataBinding.dec(loadings);
+            ProjectDataBindingUtil.dec(loadings);
         }
     };
 }
