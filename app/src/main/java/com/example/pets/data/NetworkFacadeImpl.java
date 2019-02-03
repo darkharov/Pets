@@ -18,7 +18,7 @@ public class NetworkFacadeImpl implements NetworkFacade {
     private final Api api;
 
     @Inject
-    public NetworkFacadeImpl(Api api) {
+    NetworkFacadeImpl(Api api) {
         this.api = api;
     }
 
@@ -33,7 +33,7 @@ public class NetworkFacadeImpl implements NetworkFacade {
 
         return Observable.fromIterable(response.data)
                 .zipWith(
-                        Observable.range(0, Integer.MAX_VALUE),
+                        Observable.range(1, Integer.MAX_VALUE),
                         (entry, index) -> new Pet(index, entry.title, entry.url)
                 )
                 .toList()

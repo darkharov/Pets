@@ -29,12 +29,11 @@ public class PetsListViewModel extends ListViewModel<Pet> {
         return R.layout.item_pet;
     }
 
-    @Inject
-    void init() {
+    public void init(Pet.Criteria criteria) {
         Log.e("PetsListViewModel", "init()");
 
         execute(
-                networkFacade.getPets(Pet.Criteria.CAT),
+                networkFacade.getPets(criteria),
                 new GetPetsObserver()
         );
     }

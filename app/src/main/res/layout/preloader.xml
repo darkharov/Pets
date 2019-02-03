@@ -12,6 +12,7 @@
     </data>
 
     <ViewSwitcher
+        android:background="#f0f0f0"
         style="@style/Fill"
         app:displayedChild="@{viewModel.loadings > 0 ? 0 : 1}">
 

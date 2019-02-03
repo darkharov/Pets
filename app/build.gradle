@@ -33,7 +33,11 @@ dependencies {
     implementation "com.android.support:design:$versions.support"
     implementation "com.android.support.constraint:constraint-layout:1.1.3"
 
+    // Images
     implementation "com.squareup.picasso:picasso:2.71828"
+
+    // Navigation
+    implementation "ru.terrakok.cicerone:cicerone:3.0.0"
 
     // ReactiveX
     implementation "io.reactivex.rxjava2:rxjava:$versions.rxJava"
