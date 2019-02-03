@@ -12,6 +12,5 @@
     <dimen name="item_profile_image_size">56dp</dimen>
 
     <dimen name="width_button">240dp</dimen>
-    <dimen name="image_size_item_pet">120dp</dimen>
 
 </resources>

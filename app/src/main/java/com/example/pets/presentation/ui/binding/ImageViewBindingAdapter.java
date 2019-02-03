@@ -17,12 +17,9 @@ public class ImageViewBindingAdapter {
             return;
         }
 
-        int size = imageView.getResources().getDimensionPixelSize(R.dimen.image_size_item_pet);
         Picasso.get()
                 .load(url)
-                .resize(size, size)
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .centerCrop()
                 .into(imageView);
     }
 }
