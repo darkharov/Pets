@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
 import com.example.pets.R;
 import com.example.pets.core.entities.Pet;
@@ -51,7 +52,7 @@ public class DashboardActivity extends BaseActivity {
             Pet.Criteria first = Pet.Criteria.values()[0];
 
             stack.push(first);
-            router.replaceScreen(first.name());
+            replace(first);
 
         } else {
 
@@ -69,10 +70,10 @@ public class DashboardActivity extends BaseActivity {
     public void onBackPressed() {
 
         if (stack.size() > 1) {
-            stack.pop();
+            pop(stack.pop());
             syncTabs();
         } else {
-            router.exit();
+            finish();
         }
     }
 
@@ -90,24 +91,62 @@ public class DashboardActivity extends BaseActivity {
         tabLayout.addOnTabSelectedListener(new OnTabSelectedListenerImpl());
     }
 
-    private void showPetList(Pet.Criteria criteria) {
-        if (stack.contains(criteria)) {
-
-            while (stack.getFirst() != criteria) {
-                stack.pop();
-            }
-
-            router.backTo(criteria.name());
-
-        } else {
-            stack.push(criteria);
-            router.navigateTo(criteria.name());
-        }
-    }
-
     private void syncTabs() {
         int tabIndex = stack.element().ordinal();
         Objects.requireNonNull(tabLayout.getTabAt(tabIndex)).select();
+    }
+
+    private void showPetList(Pet.Criteria criteria) {
+        if (stack.contains(criteria)) {
+
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+            while (stack.getFirst() != criteria) {
+                Fragment fragment = getSupportFragmentManager().findFragmentByTag(stack.pop().name());
+                transaction.detach(fragment);
+            }
+
+            transaction.commit();
+
+        } else {
+            stack.push(criteria);
+            add(criteria);
+        }
+    }
+
+    private void pop(Pet.Criteria criteria) {
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(criteria.name());
+
+        getSupportFragmentManager().beginTransaction()
+                .detach(Objects.requireNonNull(fragment))
+                .commit();
+    }
+
+    private void add(Pet.Criteria criteria) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(criteria.name());
+
+        if (fragment == null) {
+            transaction.add(
+                    R.id.fragment_container,
+                    PetsListFragment.newInstance(criteria),
+                    criteria.name()
+            );
+        } else {
+            transaction.attach(fragment);
+        }
+
+        transaction.commit();
+    }
+
+    private void replace(Pet.Criteria criteria) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(
+                        R.id.fragment_container,
+                        PetsListFragment.newInstance(criteria),
+                        criteria.name()
+                )
+                .commit();
     }
 
 
